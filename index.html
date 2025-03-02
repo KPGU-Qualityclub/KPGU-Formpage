@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Google Form Embed</title>
+    <title>KPGU-Formpage</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -29,38 +30,19 @@
             border: none;
         }
     </style>
+    <script>
+        // Redirect if the page is reloaded
+        if (sessionStorage.getItem("reloaded")) {
+            window.location.href = "https://kpgu-qualityclub.github.io/KPGU-response/";
+        } else {
+            sessionStorage.setItem("reloaded", "true");
+        }
+    </script>
 </head>
 <body>
     <div class="container">
         <h2>Fill Out the Form Below</h2>
-        <iframe id="googleForm" src="https://docs.google.com/forms/d/e/1FAIpQLSci-Ee8yqjpNLO6lDVPUAxxyOGzsoN2fRBIhLguy9Sw3EiE_w/viewform?embedded=true"></iframe>
-        <p>After submission, you will be redirected automatically.</p>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSci-Ee8yqjpNLO6lDVPUAxxyOGzsoN2fRBIhLguy9Sw3EiE_w/viewform?embedded=true"></iframe>
     </div>
-
-    <script>
-        // Redirect if the user reloads the page
-        if (sessionStorage.getItem("reloaded")) {
-            window.location.href = "https://www.youtube.com";
-        } else {
-            sessionStorage.setItem("reloaded", "true");
-        }
-
-        function detectFormSubmission() {
-            const formIframe = document.getElementById("googleForm");
-
-            setInterval(() => {
-                try {
-                    if (formIframe.contentWindow.location.href.includes("formResponse")) {
-                        alert("Form submitted! Redirecting...");
-                        window.location.href = "https://www.youtube.com"; // Redirect after submission
-                    }
-                } catch (error) {
-                    console.log("Cross-origin restriction prevents checking iframe content.");
-                }
-            }, 1000);
-        }
-
-        window.onload = detectFormSubmission;
-    </script>
 </body>
 </html>
